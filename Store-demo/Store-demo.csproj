@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -55,12 +58,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -125,14 +137,30 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\API\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Dto\ProductDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202104181117048_InitialMigrationAddProductModel.cs" />
     <Compile Include="Migrations\202104181117048_InitialMigrationAddProductModel.Designer.cs">
       <DependentUpon>202104181117048_InitialMigrationAddProductModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104181148208_CheckHowAutoMapperWorks.cs" />
+    <Compile Include="Migrations\202104181148208_CheckHowAutoMapperWorks.Designer.cs">
+      <DependentUpon>202104181148208_CheckHowAutoMapperWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104181150307_ReverseChanges.cs" />
+    <Compile Include="Migrations\202104181150307_ReverseChanges.Designer.cs">
+      <DependentUpon>202104181150307_ReverseChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104181151468_ReverseChanges2.cs" />
+    <Compile Include="Migrations\202104181151468_ReverseChanges2.Designer.cs">
+      <DependentUpon>202104181151468_ReverseChanges2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -178,7 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\API\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -196,6 +223,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104181117048_InitialMigrationAddProductModel.resx">
       <DependentUpon>202104181117048_InitialMigrationAddProductModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104181148208_CheckHowAutoMapperWorks.resx">
+      <DependentUpon>202104181148208_CheckHowAutoMapperWorks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104181150307_ReverseChanges.resx">
+      <DependentUpon>202104181150307_ReverseChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104181151468_ReverseChanges2.resx">
+      <DependentUpon>202104181151468_ReverseChanges2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
