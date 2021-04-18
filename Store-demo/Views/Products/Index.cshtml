@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Store_demo.Models.Product>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+<table id="products" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Code</td>
+                <td>@product.Quantity</td>
+                <td>@product.Price</td>
+                <td>
+                    <button data-product-id="@product.Id" class="btn-link js-delete">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#products .js-delete").on("click", function () {
+                var button $(this);
+                if (confirm("Are you sure?")) {
+                    $.ajax({
+                        url: "/api/products/" + button.attr("data-product-id"),
+                        method: "DELETE",
+                        success: function () {
+                            button.parents("tr").remove();
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+}
