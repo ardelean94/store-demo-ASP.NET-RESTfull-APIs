@@ -30,7 +30,7 @@ namespace Store_demo.Controllers.API
             return Ok(productDtos);
         }
 
-        //GET api/products/1
+        //GET api/products/:id
         [HttpGet]
         public IHttpActionResult GetProduct(int id)
         {
@@ -60,7 +60,7 @@ namespace Store_demo.Controllers.API
             return Created(new Uri(Request.RequestUri + "/" + productDto.Id), productDto);
         }
 
-        //PUT api/products/2
+        //PUT api/products/:id
         [HttpPut]
         public IHttpActionResult UpdateProduct(int id, ProductDto productDto)
         {
@@ -80,7 +80,7 @@ namespace Store_demo.Controllers.API
 
         }
 
-        //DELETE api/products/3
+        //DELETE api/products/:id
         [HttpDelete]
         public IHttpActionResult DeleteProduct(int id)
         {
